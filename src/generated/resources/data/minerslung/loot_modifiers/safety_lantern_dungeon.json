@@ -1,21 +1,14 @@
 {
+  "type": "minerslung:add_item",
   "conditions": [
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:chests/simple_dungeon"
     },
     {
-      "condition": "minecraft:random_chance",
-      "chance": 0.3
+      "chance": 0.3,
+      "condition": "minecraft:random_chance"
     }
   ],
-  "item": "minerslung:safety_lantern",
-  "functions": [
-    {
-      "function": "minecraft:set_count",
-      "count": 1.0,
-      "add": false
-    }
-  ],
-  "type": "paucal:add_item"
+  "item": "minerslung:safety_lantern"
 }

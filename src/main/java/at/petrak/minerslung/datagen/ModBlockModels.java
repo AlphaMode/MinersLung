@@ -3,7 +3,7 @@ package at.petrak.minerslung.datagen;
 import at.petrak.minerslung.MinersLungMod;
 import at.petrak.minerslung.common.blocks.ModBlocks;
 import at.petrak.minerslung.common.blocks.SafetyLanternBlock;
-import at.petrak.paucal.api.datagen.PaucalBlockStateAndModelProvider;
+import at.petrak.paucal.api.forge.datagen.PaucalBlockStateAndModelProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.block.LanternBlock;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -19,8 +19,8 @@ public class ModBlockModels extends PaucalBlockStateAndModelProvider {
     @Override
     protected void registerStatesAndModels() {
         var torchTex = modLoc("block/signal_torch");
-        simpleBlock(ModBlocks.SIGNAL_TORCH.get(), models().torch("signal_torch", torchTex));
-        horizontalBlock(ModBlocks.WALL_SIGNAL_TORCH.get(), models().torchWall("wall_signal_torch", torchTex), 90);
+        simpleBlock(ModBlocks.SIGNAL_TORCH.get(), models().torch("signal_torch", torchTex).renderType("cutout"));
+        horizontalBlock(ModBlocks.WALL_SIGNAL_TORCH.get(), models().torchWall("wall_signal_torch", torchTex).renderType("cutout"), 90);
 
 
         getVariantBuilder(ModBlocks.SAFETY_LANTERN.get()).forAllStates(bs -> {
@@ -31,7 +31,7 @@ public class ModBlockModels extends PaucalBlockStateAndModelProvider {
             var model = models().withExistingParent(
                     name + (bs.getValue(LanternBlock.HANGING) ? "_hanging" : ""),
                     "minecraft:" + templatePath)
-                .texture("lantern", texPath);
+                .texture("lantern", texPath).renderType("cutout");
             return ConfiguredModel.builder().modelFile(model).build();
         });
     }

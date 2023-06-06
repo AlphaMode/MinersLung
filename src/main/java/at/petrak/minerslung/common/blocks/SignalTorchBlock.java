@@ -7,6 +7,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -18,15 +19,13 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-import java.util.Random;
-
 public class SignalTorchBlock extends TorchBlock {
     public SignalTorchBlock(Properties pProperties) {
         super(pProperties, ParticleTypes.FLAME);
     }
 
     @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, Random random) {
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource random) {
         double x = pPos.getX() + 0.5D;
         double y = pPos.getY() + 0.7D;
         double z = pPos.getZ() + 0.5D;
@@ -39,7 +38,7 @@ public class SignalTorchBlock extends TorchBlock {
 
     @SubscribeEvent
     public static void switchTorchType(PlayerInteractEvent.RightClickBlock evt) {
-        var player = evt.getPlayer();
+        var player = evt.getEntity();
         if (!MinersLungConfig.enableSignalTorches.get() || evt.getHand() != InteractionHand.MAIN_HAND || player.isDiscrete()) {
             return;
         }

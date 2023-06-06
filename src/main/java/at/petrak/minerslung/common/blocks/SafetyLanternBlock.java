@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,8 +28,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.ticks.TickPriority;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Random;
 
 public class SafetyLanternBlock extends LanternBlock {
     public static final EnumProperty<AirQualityLevel> AIR_QUALITY =
@@ -134,7 +133,7 @@ public class SafetyLanternBlock extends LanternBlock {
     }
 
     @Override
-    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
+    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         pLevel.scheduleTick(pPos, this, 20, TickPriority.NORMAL);
         if (!pState.getValue(LOCKED)) {
             pLevel.setBlockAndUpdate(pPos, setAirQuality(pLevel, pPos, pState));

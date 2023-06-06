@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " LS",
-    "L L",
-    " L "
-  ],
   "key": {
     "L": {
       "item": "minecraft:leather"
@@ -13,6 +8,11 @@
       "item": "minecraft:string"
     }
   },
+  "pattern": [
+    " LS",
+    "L L",
+    " L "
+  ],
   "result": {
     "item": "minerslung:air_bladder"
   }

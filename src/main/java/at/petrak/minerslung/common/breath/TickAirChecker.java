@@ -5,19 +5,18 @@ import at.petrak.minerslung.common.advancement.ModAdvancementTriggers;
 import at.petrak.minerslung.common.items.ModItems;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-import java.util.Random;
-
 public class TickAirChecker {
-    private static final Random RANDOM = new Random();
+    private static final RandomSource RANDOM = RandomSource.create();
 
     @SubscribeEvent
-    public static void modifyEntityAir(LivingEvent.LivingUpdateEvent evt) {
-        var e = evt.getEntityLiving();
+    public static void modifyEntityAir(LivingEvent.LivingTickEvent evt) {
+        var e = evt.getEntity();
         var world = e.level;
 
         var o2Pair = AirHelper.getO2LevelFromLocation(e.getEyePosition(), e.level);

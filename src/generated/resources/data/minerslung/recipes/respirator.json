@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " S ",
-    "P P",
-    "PCP"
-  ],
   "key": {
+    "C": {
+      "item": "minecraft:charcoal"
+    },
     "P": {
       "item": "minecraft:paper"
     },
     "S": {
       "item": "minecraft:string"
-    },
-    "C": {
-      "item": "minecraft:charcoal"
     }
   },
+  "pattern": [
+    " S ",
+    "P P",
+    "PCP"
+  ],
   "result": {
     "item": "minerslung:respirator"
   }

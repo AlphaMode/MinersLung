@@ -1,52 +1,52 @@
 {
   "parent": "minerslung:lantern",
-  "display": {
-    "icon": {
-      "item": "minerslung:fake_rainbow_lantern"
-    },
-    "title": {
-      "translate": "advancement.minerslung:disco_lantern"
-    },
-    "description": {
-      "translate": "advancement.minerslung:disco_lantern.desc"
-    },
-    "frame": "task",
-    "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
   "criteria": {
-    "red": {
-      "trigger": "minecraft:item_used_on_block",
-      "conditions": {
-        "item": {
-          "tag": "forge:dyes/red"
-        }
-      }
-    },
-    "yellow": {
-      "trigger": "minecraft:item_used_on_block",
-      "conditions": {
-        "item": {
-          "tag": "forge:dyes/yellow"
-        }
-      }
-    },
     "blue": {
-      "trigger": "minecraft:item_used_on_block",
       "conditions": {
         "item": {
           "tag": "forge:dyes/blue"
         }
-      }
+      },
+      "trigger": "minecraft:item_used_on_block"
     },
     "green": {
-      "trigger": "minecraft:item_used_on_block",
       "conditions": {
         "item": {
           "tag": "forge:dyes/green"
         }
-      }
+      },
+      "trigger": "minecraft:item_used_on_block"
+    },
+    "red": {
+      "conditions": {
+        "item": {
+          "tag": "forge:dyes/red"
+        }
+      },
+      "trigger": "minecraft:item_used_on_block"
+    },
+    "yellow": {
+      "conditions": {
+        "item": {
+          "tag": "forge:dyes/yellow"
+        }
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.minerslung:disco_lantern.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minerslung:fake_rainbow_lantern"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.minerslung:disco_lantern"
     }
   },
   "requirements": [

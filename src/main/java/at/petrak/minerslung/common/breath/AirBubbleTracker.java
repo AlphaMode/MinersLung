@@ -15,8 +15,8 @@ import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.world.ChunkEvent;
-import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.event.level.ChunkEvent;
+import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.Nullable;
 
@@ -59,7 +59,7 @@ public class AirBubbleTracker {
 
     @SubscribeEvent
     public static void onChunkLoad(ChunkEvent.Load evt) {
-        var world = evt.getWorld();
+        var world = evt.getLevel();
         var chunkpos = evt.getChunk().getPos();
         var chunk = world.getChunkSource().getChunkNow(chunkpos.x, chunkpos.z);
         if (chunk != null) {
@@ -90,10 +90,10 @@ public class AirBubbleTracker {
     }
 
     @SubscribeEvent
-    public static void consumeReqdChunksServer(TickEvent.WorldTickEvent evt) {
+    public static void consumeReqdChunksServer(TickEvent.LevelTickEvent evt) {
         if (!serverChunksToScan.isEmpty()) {
             var chunkpos = serverChunksToScan.removeFirst();
-            var chunk = evt.world.getChunkSource().getChunkNow(chunkpos.x, chunkpos.z);
+            var chunk = evt.level.getChunkSource().getChunkNow(chunkpos.x, chunkpos.z);
             if (chunk != null) {
                 var maybeCap = chunk.getCapability(ModCapabilities.AIR_BUBBLE_POSITIONS).resolve();
                 if (maybeCap.isPresent()) {
@@ -111,8 +111,8 @@ public class AirBubbleTracker {
     }
 
     @SubscribeEvent
-    public static void onWorldClose(WorldEvent.Unload evt) {
-        (evt.getWorld().isClientSide() ? clientChunksToScan : serverChunksToScan).clear();
+    public static void onWorldClose(LevelEvent.Unload evt) {
+        (evt.getLevel().isClientSide() ? clientChunksToScan : serverChunksToScan).clear();
     }
 
     /**

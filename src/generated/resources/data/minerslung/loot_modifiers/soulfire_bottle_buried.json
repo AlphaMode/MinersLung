@@ -1,4 +1,5 @@
 {
+  "type": "minerslung:add_item_uniform",
   "conditions": [
     {
       "condition": "forge:loot_table_id",
@@ -6,16 +7,6 @@
     }
   ],
   "item": "minerslung:soulfire_bottle",
-  "functions": [
-    {
-      "function": "minecraft:set_count",
-      "count": {
-        "type": "minecraft:uniform",
-        "min": 3.0,
-        "max": 10.0
-      },
-      "add": false
-    }
-  ],
-  "type": "paucal:add_item"
+  "max": 10,
+  "min": 3
 }

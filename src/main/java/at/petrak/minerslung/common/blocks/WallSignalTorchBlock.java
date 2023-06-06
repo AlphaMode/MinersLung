@@ -2,11 +2,10 @@ package at.petrak.minerslung.common.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.WallTorchBlock;
 import net.minecraft.world.level.block.state.BlockState;
-
-import java.util.Random;
 
 public class WallSignalTorchBlock extends WallTorchBlock {
     public WallSignalTorchBlock(Properties pProperties) {
@@ -14,7 +13,7 @@ public class WallSignalTorchBlock extends WallTorchBlock {
     }
 
     @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, Random random) {
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource random) {
         var facing = pState.getValue(FACING);
         var opposite = facing.getOpposite();
         double x = pPos.getX() + 0.5D + 0.27D * opposite.getStepX();

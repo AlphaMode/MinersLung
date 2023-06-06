@@ -6,12 +6,13 @@ import at.petrak.minerslung.common.breath.AirQualityLevel;
 import at.petrak.minerslung.common.items.ModItems;
 import com.mojang.datafixers.util.Either;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.advancements.AdvancementProvider;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Unit;
 import net.minecraft.world.item.ItemStack;
@@ -78,8 +79,8 @@ public class ModAdvancementProvider extends AdvancementProvider {
 
         Advancement.Builder.advancement()
             .display(new DisplayInfo(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER_BREATHING),
-                new TranslatableComponent("advancement." + MinersLungMod.MOD_ID + ":protection_from_red"),
-                new TranslatableComponent("advancement." + MinersLungMod.MOD_ID + ":protection_from_red.desc"),
+                Component.translatable("advancement." + MinersLungMod.MOD_ID + ":protection_from_red"),
+                Component.translatable("advancement." + MinersLungMod.MOD_ID + ":protection_from_red.desc"),
                 null, FrameType.GOAL, true, true, false))
             .parent(protectYellow)
             .addCriterion("protecc",
@@ -100,16 +101,16 @@ public class ModAdvancementProvider extends AdvancementProvider {
             .display(simple(ModItems.FAKE_RAINBOW_LANTERN.get(), "disco_lantern", FrameType.TASK))
             .parent(lantern)
             .addCriterion("red",
-                new ItemUsedOnBlockTrigger.TriggerInstance(EntityPredicate.Composite.ANY, LocationPredicate.ANY,
+                new ItemInteractWithBlockTrigger.TriggerInstance(CriteriaTriggers.ITEM_USED_ON_BLOCK.getId(), EntityPredicate.Composite.ANY, LocationPredicate.ANY,
                     ItemPredicate.Builder.item().of(Tags.Items.DYES_RED).build()))
             .addCriterion("yellow",
-                new ItemUsedOnBlockTrigger.TriggerInstance(EntityPredicate.Composite.ANY, LocationPredicate.ANY,
+                new ItemInteractWithBlockTrigger.TriggerInstance(CriteriaTriggers.ITEM_USED_ON_BLOCK.getId(), EntityPredicate.Composite.ANY, LocationPredicate.ANY,
                     ItemPredicate.Builder.item().of(Tags.Items.DYES_YELLOW).build()))
             .addCriterion("blue",
-                new ItemUsedOnBlockTrigger.TriggerInstance(EntityPredicate.Composite.ANY, LocationPredicate.ANY,
+                new ItemInteractWithBlockTrigger.TriggerInstance(CriteriaTriggers.ITEM_USED_ON_BLOCK.getId(), EntityPredicate.Composite.ANY, LocationPredicate.ANY,
                     ItemPredicate.Builder.item().of(Tags.Items.DYES_BLUE).build()))
             .addCriterion("green",
-                new ItemUsedOnBlockTrigger.TriggerInstance(EntityPredicate.Composite.ANY, LocationPredicate.ANY,
+                new ItemInteractWithBlockTrigger.TriggerInstance(CriteriaTriggers.ITEM_USED_ON_BLOCK.getId(), EntityPredicate.Composite.ANY, LocationPredicate.ANY,
                     ItemPredicate.Builder.item().of(Tags.Items.DYES_GREEN).build()))
             .requirements(new String[][]{{"red", "yellow", "blue", "green"}})
             .save(advancements, prefix("disco_lantern"));
@@ -131,8 +132,8 @@ public class ModAdvancementProvider extends AdvancementProvider {
         ResourceLocation background) {
         String expandedName = "advancement." + MinersLungMod.MOD_ID + ":" + name;
         return new DisplayInfo(new ItemStack(icon.asItem()),
-            new TranslatableComponent(expandedName),
-            new TranslatableComponent(expandedName + ".desc"),
+            Component.translatable(expandedName),
+            Component.translatable(expandedName + ".desc"),
             background, frameType, true, true, false);
     }
 

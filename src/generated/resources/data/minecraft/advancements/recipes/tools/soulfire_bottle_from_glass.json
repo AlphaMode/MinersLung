@@ -1,22 +1,17 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "minecraft:soulfire_bottle_from_glass"
-    ]
-  },
   "criteria": {
-    "namesarehard": {
-      "trigger": "minecraft:changed_dimension",
-      "conditions": {
-        "to": "minecraft:the_nether"
-      }
-    },
     "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:soulfire_bottle_from_glass"
-      }
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "namesarehard": {
+      "conditions": {
+        "to": "minecraft:the_nether"
+      },
+      "trigger": "minecraft:changed_dimension"
     }
   },
   "requirements": [
@@ -24,5 +19,10 @@
       "namesarehard",
       "has_the_recipe"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:soulfire_bottle_from_glass"
+    ]
+  }
 }

@@ -27,7 +27,7 @@ public class ModCraftingRecipes extends PaucalRecipeProvider {
     }
 
     @Override
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> recipes) {
+    protected void makeRecipes(Consumer<FinishedRecipe> recipes) {
         var yellowTrigger = new BreatheAirTrigger.Instance(EntityPredicate.Composite.ANY,
             EnumSet.of(AirQualityLevel.YELLOW, AirQualityLevel.RED), null,
             Either.left(AirProtectionSource.NONE));

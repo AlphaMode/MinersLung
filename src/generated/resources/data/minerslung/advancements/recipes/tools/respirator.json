@@ -1,26 +1,21 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "minerslung:respirator"
-    ]
-  },
   "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minerslung:respirator"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
     "namesarehard": {
-      "trigger": "minerslung:breathe_bad_air",
       "conditions": {
         "air_qualities": [
           "yellow",
           "red"
         ],
         "protection": "none"
-      }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "minerslung:respirator"
-      }
+      },
+      "trigger": "minerslung:breathe_bad_air"
     }
   },
   "requirements": [
@@ -28,5 +23,10 @@
       "namesarehard",
       "has_the_recipe"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minerslung:respirator"
+    ]
+  }
 }

@@ -1,25 +1,16 @@
 {
+  "type": "minerslung:add_item_uniform",
   "conditions": [
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:chests/underwater_ruin_small"
     },
     {
-      "condition": "minecraft:random_chance",
-      "chance": 0.3
+      "chance": 0.3,
+      "condition": "minecraft:random_chance"
     }
   ],
   "item": "minerslung:soulfire_bottle",
-  "functions": [
-    {
-      "function": "minecraft:set_count",
-      "count": {
-        "type": "minecraft:uniform",
-        "min": 1.0,
-        "max": 3.0
-      },
-      "add": false
-    }
-  ],
-  "type": "paucal:add_item"
+  "max": 3,
+  "min": 1
 }

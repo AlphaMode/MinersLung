@@ -11,9 +11,7 @@ public class DrownedOxygent {
     public static void onDrownedAttack(LivingDamageEvent evt) {
         if (evt.getSource().getEntity() instanceof Drowned && !evt.getSource().isProjectile()) {
             var target = evt.getEntity();
-            if (target instanceof LivingEntity living) {
-                living.setAirSupply(living.getAirSupply() - MinersLungConfig.drownedChoking.get());
-            }
+            target.setAirSupply(target.getAirSupply() - MinersLungConfig.drownedChoking.get());
         }
     }
 }

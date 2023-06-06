@@ -3,11 +3,12 @@ package at.petrak.minerslung.datagen;
 import at.petrak.minerslung.MinersLungMod;
 import at.petrak.minerslung.common.breath.AirQualityLevel;
 import at.petrak.minerslung.common.items.ModItems;
-import at.petrak.paucal.api.datagen.PaucalItemModelProvider;
+import at.petrak.paucal.api.forge.datagen.PaucalItemModelProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModItemModels extends PaucalItemModelProvider {
     public ModItemModels(DataGenerator generator, ExistingFileHelper existingFileHelper) {
@@ -36,7 +37,7 @@ public class ModItemModels extends PaucalItemModelProvider {
             var name = "lantern_" + aq.getSerializedName();
             simpleItem(modLoc(name));
             var texPath = modLoc("item/" + name);
-            getBuilder(ModItems.SAFETY_LANTERN.get().getRegistryName().getPath())
+            getBuilder(ForgeRegistries.ITEMS.getKey(ModItems.SAFETY_LANTERN.get()).getPath())
                 .override()
                 .predicate(ModItems.SAFETY_LANTERN_AIR_QUALITY_PRED, i)
                 .model(new ModelFile.UncheckedModelFile(texPath))
